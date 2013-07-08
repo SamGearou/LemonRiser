@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import com.jordan.framework.Image;
 
-//first commit by Ike
+
 public class Animation {
-//second commit jordan
+
 	private ArrayList frames;
 	private int currentFrame;
 	private long animTime;
