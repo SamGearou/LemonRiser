@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.jordan.framework.Image;
 
-
+//first commit by Ike
 public class Animation {
 
 	private ArrayList frames;
