@@ -23,6 +23,7 @@ public class LoadingScreen extends Screen {
         Assets.movingplatdef = g.newImage("movingplat.png", ImageFormat.RGB565);
         Assets.vanishplatdef = g.newImage("vanishplat.png", ImageFormat.RGB565);
         Assets.superplatdef = g.newImage("superplat.png", ImageFormat.RGB565);
+        Assets.riseplatdef = g.newImage("riseplat.png", ImageFormat.RGB565);
 
         Assets.backgroundike = g.newImage("gamebg.png", ImageFormat.RGB565);
         Assets.guyeike = g.newImage("guye.png", ImageFormat.RGB565);
@@ -33,8 +34,8 @@ public class LoadingScreen extends Screen {
         Assets.movingplatike = g.newImage("movingplatike.png", ImageFormat.RGB565);
         Assets.vanishplatike = g.newImage("vanishplatike.png", ImageFormat.RGB565);
         Assets.superplatike = g.newImage("superplatike.png", ImageFormat.RGB565);
+        Assets.riseplatike = g.newImage("riseplat.png", ImageFormat.RGB565);
 
-        Assets.ike = false;
         Assets.reloadImages();
 
 		//This is how you would load a sound if you had one.

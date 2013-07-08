@@ -8,15 +8,15 @@ public class Assets {
 	
 	public static Image splash, background;
     public static Image guye, guys, guyl, guyr;
-    public static Image basicplat, movingplat, vanishplat, superplat;
+    public static Image basicplat, movingplat, vanishplat, superplat, riseplat;
 
     public static Image backgrounddef;
     public static Image guyedef, guysdef, guyldef, guyrdef;
-    public static Image basicplatdef, movingplatdef, vanishplatdef, superplatdef;
+    public static Image basicplatdef, movingplatdef, vanishplatdef, superplatdef, riseplatdef;
 
     public static Image backgroundike;
     public static Image guyeike, guysike, guylike, guyrike;
-    public static Image basicplatike, movingplatike, vanishplatike, superplatike;
+    public static Image basicplatike, movingplatike, vanishplatike, superplatike, riseplatike;
 
     //public static Sound click;
     //public static Music theme;
@@ -42,6 +42,7 @@ public class Assets {
             vanishplat = vanishplatike;
             movingplat = movingplatike;
             superplat = superplatike;
+            riseplat = riseplatike;
         }
         else
         {
@@ -54,6 +55,7 @@ public class Assets {
             vanishplat = vanishplatdef;
             movingplat = movingplatdef;
             superplat = superplatdef;
+            riseplat = riseplatdef;
         }
 
     }
