@@ -42,6 +42,13 @@ public class Assets {
 		theme.play();
 	}
 
+    public static void toggleMusic()
+    {
+        if (theme.isPlaying())
+            theme.pause();
+        else theme.play();
+    }
+
     public static void reloadImages()
     {
         ike = !ike;
