@@ -58,6 +58,8 @@ public class GameScreen extends Screen {
             switch(event.type)
             {
                 case TouchEvent.TOUCH_DOWN:
+                    if (event.x > 430 && event.y < 50)
+                        Assets.toggleMusic();
                 case TouchEvent.TOUCH_DRAGGED:
                     right = false;
                     left = false;
