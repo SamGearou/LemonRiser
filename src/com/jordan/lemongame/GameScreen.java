@@ -18,25 +18,19 @@ public class GameScreen extends Screen {
 
 	GameState state = GameState.Ready;
 
-	private Animation anim, hanim;
+	//private Animation anim, hanim;
     private int ticks = 0;
     private final int OFFSET = 30;
     private int pauseticks;
 	Paint paintc, paintl;
+    private boolean right = false, left = false;
 
 	public GameScreen(Game game) {
 		super(game);
 
-		// Initialize game objects here
-
         //how to animate
 		/*hanim = new Animation();
-		hanim.addFrame(heliboy, 100);
-		hanim.addFrame(heliboy2, 100);
-		hanim.addFrame(heliboy3, 100);
-		hanim.addFrame(heliboy4, 100);
-		hanim.addFrame(heliboy5, 100);
-		hanim.addFrame(heliboy4, 100);
+		hanim.addFrame(heliboy, 200);
 		hanim.addFrame(heliboy3, 100);
 		hanim.addFrame(heliboy2, 100);*/
 
@@ -52,46 +46,14 @@ public class GameScreen extends Screen {
         paintl.setTextAlign(Paint.Align.LEFT);
         paintl.setAntiAlias(true);
         paintl.setColor(Color.GRAY);
-
 	}
 
-	@Override
-	public void update(float deltaTime) {
-        ticks++;
-		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
 
-		// We have four separate update methods in this example.
-		// Depending on the state of the game, we call different update methods.
-		// Refer to Unit 3's code. We did a similar thing without separating the
-		// update methods.
 
-		if (state == GameState.Ready)
-			updateReady(touchEvents);
-		if (state == GameState.Running)
-			updateRunning(touchEvents, deltaTime);
-		if (state == GameState.Paused)
-			updatePaused(touchEvents);
-		if (state == GameState.GameOver)
-			updateGameOver(touchEvents);
-	}
+    private void updateRunning(List<TouchEvent> touchEvents, float deltaTime) {
 
-	private void updateReady(List<TouchEvent> touchEvents) {
-
-		// This example starts with a "Ready" screen.
-		// When the user touches the screen, the game begins.
-		// state now becomes GameState.Running.
-		// Now the updateRunning() method will be called!
-
-		if (touchEvents.size() > 0)
-			state = GameState.Running;
-	}
-
-    private boolean right = false, left = false;
-
-	private void updateRunning(List<TouchEvent> touchEvents, float deltaTime) {
-
-		// 1. All touch input is handled here:
-		for (TouchEvent event: touchEvents) {
+        // 1. All touch input is handled here:
+        for (TouchEvent event: touchEvents) {
             if (ticks < 15) break;
             switch(event.type)
             {
@@ -112,69 +74,21 @@ public class GameScreen extends Screen {
                     left = false;
             }
 
-		}
+        }
 
-		//2. update
+        //2. update
         GameDisplay.update(right,left);
 
         //3. check for death
-		if (!GameDisplay.guy.checkDeath())
+        if (!GameDisplay.guy.checkDeath())
         {
-			state = GameState.GameOver;
+            state = GameState.GameOver;
             pauseticks = ticks;
         }
 
         //anim.update(10);
-	}
-
-	private void updatePaused(List<TouchEvent> touchEvents) {
-		if (touchEvents.size() > 0 && pauseticks + 15 < ticks)
-				resume();
-	}
-
-	private void updateGameOver(List<TouchEvent> touchEvents) {
-        if (touchEvents.size() > 0 && pauseticks + 15 < ticks)
-        {
-            nullify();
-			game.setScreen(new GameScreen(game));
-        }
-	}
-
-	@Override
-	public void paint(float deltaTime) {
-		if (state == GameState.Ready)
-			drawReadyUI();
-		if (state == GameState.Running)
-			drawRunningUI();
-		if (state == GameState.Paused)
-			drawPausedUI();
-		if (state == GameState.GameOver)
-			drawGameOverUI();
-	}
-
-	private void nullify() {
-
-		// Set all variables to null, recreate them in the constructor.
-		paintc = null;
-        paintl = null;
-		anim = null;
-		hanim = null;
-
-        GameDisplay.reset();
-
-		// Call garbage collector to clean up memory.
-		System.gc();
-	}
-
-	private void drawReadyUI() {
-		Graphics g = game.getGraphics();
-        g.drawImage(Assets.background, 0,0);
-
-        g.drawARGB(200, 0, 0, 0);
-		g.drawString("Tap to Start", 240, 400, paintc);
-	}
-
-	private void drawRunningUI() {
+    }
+    private void drawRunningUI() {
         Graphics g = game.getGraphics();
         g.clearScreen(Color.BLACK);
         g.drawImage(Assets.background, 0,0);
@@ -203,16 +117,54 @@ public class GameScreen extends Screen {
         }
 
         g.drawString((int)GameDisplay.guy.currentScore + "", 140, 37, paintl);
-	}
+    }
 
-	private void drawPausedUI() {
-		Graphics g = game.getGraphics();
+
+
+
+
+
+
+	private void updateReady(List<TouchEvent> touchEvents) {
+
+		// This example starts with a "Ready" screen.
+		// When the user touches the screen, the game begins.
+		// state now becomes GameState.Running.
+		// Now the updateRunning() method will be called!
+
+		if (touchEvents.size() > 0)
+			state = GameState.Running;
+	}
+    private void drawReadyUI() {
+        Graphics g = game.getGraphics();
+        g.drawImage(Assets.background, 0,0);
+
+        g.drawARGB(200, 0, 0, 0);
+        g.drawString("Tap to Start", 240, 400, paintc);
+    }
+
+	private void updatePaused(List<TouchEvent> touchEvents) {
+        if (touchEvents.size() > 0 && touchEvents.get(0).x > 430 && touchEvents.get(0).y > 750)
+            Assets.reloadImages();
+
+		if (touchEvents.size() > 0 && pauseticks + 15 < ticks)
+				resume();
+	}
+    private void drawPausedUI() {
+        Graphics g = game.getGraphics();
         drawRunningUI();
-		// Darken the entire screen so you can display the Paused screen.
-		g.drawARGB(200, 0, 0, 0);
-		g.drawString("Tap to Resume", 240, 400, paintc);
-	}
+        // Darken the entire screen so you can display the Paused screen.
+        g.drawARGB(200, 0, 0, 0);
+        g.drawString("Tap to Resume", 240, 400, paintc);
+    }
 
+	private void updateGameOver(List<TouchEvent> touchEvents) {
+        if (touchEvents.size() > 0 && pauseticks + 15 < ticks)
+        {
+            nullify();
+			game.setScreen(new GameScreen(game));
+        }
+	}
 	private void drawGameOverUI() {
 		Graphics g = game.getGraphics();
         drawRunningUI();
@@ -221,6 +173,47 @@ public class GameScreen extends Screen {
         g.drawString("SCORE: " + (int)GameDisplay.guy.currentScore, 240, 400, paintc);
 		g.drawString("Tap to Retry", 240, 475, paintc);
 	}
+
+    @Override
+    public void update(float deltaTime) {
+        ticks++;
+        List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
+
+        if (state == GameState.Ready)
+            updateReady(touchEvents);
+        if (state == GameState.Running)
+            updateRunning(touchEvents, deltaTime);
+        if (state == GameState.Paused)
+            updatePaused(touchEvents);
+        if (state == GameState.GameOver)
+            updateGameOver(touchEvents);
+    }
+    @Override
+    public void paint(float deltaTime) {
+        if (state == GameState.Ready)
+            drawReadyUI();
+        if (state == GameState.Running)
+            drawRunningUI();
+        if (state == GameState.Paused)
+            drawPausedUI();
+        if (state == GameState.GameOver)
+            drawGameOverUI();
+    }
+
+
+    private void nullify() {
+
+        // Set all variables to null, recreate them in the constructor.
+        paintc = null;
+        paintl = null;
+        //anim = null;
+        //hanim = null;
+
+        GameDisplay.reset();
+
+        // Call garbage collector to clean up memory.
+        System.gc();
+    }
 
 	@Override
 	public void pause() {
