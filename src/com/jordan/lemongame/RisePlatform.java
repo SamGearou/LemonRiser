@@ -16,7 +16,7 @@ public class RisePlatform extends Platform {
     @Override
     public void onCollision(ScribbleGuy guy) {
         basicCollisionAction(guy);
-        c.y += diff;
+        c.y += diff * 3;
         c.x += Math.random() * 50 - 25;
         if (c.y > end) c.y = 0;
     }
