@@ -10,7 +10,10 @@ public class SuperPlatform extends Platform {
 
     @Override
     public void onCollision(ScribbleGuy guy) {
-        guy.velocity = guy.getMV() * 3;
+        if (Math.random() < 0.04)
+            guy.velocity = guy.getMV() * 7.01;
+        else
+            guy.velocity = guy.getMV() * 2.98;
     }
 
     @Override

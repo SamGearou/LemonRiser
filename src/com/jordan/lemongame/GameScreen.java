@@ -146,8 +146,16 @@ public class GameScreen extends Screen {
     }
 
 	private void updatePaused(List<TouchEvent> touchEvents) {
-        if (touchEvents.size() > 0 && touchEvents.get(0).x > 430 && touchEvents.get(0).y > 750)
-            Assets.reloadImages();
+        if (Assets.cheats)
+        {
+            if (touchEvents.size() > 0 && touchEvents.get(0).x > 430 && touchEvents.get(0).y > 750)
+                Assets.reloadImages();
+            if (touchEvents.size() > 0 && touchEvents.get(0).x < 50 && touchEvents.get(0).y > 750)
+            {
+                GameDisplay.guy.c.y += 40000;
+                GameDisplay.guy.velocity = GameDisplay.guy.getMV();
+            }
+        }
 
 		if (touchEvents.size() > 0 && pauseticks + 15 < ticks)
 				resume();
@@ -161,6 +169,12 @@ public class GameScreen extends Screen {
     }
 
 	private void updateGameOver(List<TouchEvent> touchEvents) {
+        if ((int)GameDisplay.guy.currentScore > Assets.highScore)
+        {
+            Assets.writeToMemory(Assets.highScoreFile, "" + (int)GameDisplay.guy.currentScore);
+            Assets.highScore = (int)GameDisplay.guy.currentScore;
+        }
+
         if (touchEvents.size() > 0 && pauseticks + 15 < ticks)
         {
             nullify();
@@ -173,7 +187,8 @@ public class GameScreen extends Screen {
         g.drawARGB(200, 0, 0, 0);
         g.drawString("GAME OVER", 240, 325, paintc);
         g.drawString("SCORE: " + (int)GameDisplay.guy.currentScore, 240, 400, paintc);
-		g.drawString("Tap to Retry", 240, 475, paintc);
+		g.drawString("Tap to Retry", 240, 550, paintc);
+        g.drawString("BEST: " + Assets.highScore, 240, 475, paintc);
 	}
 
     @Override

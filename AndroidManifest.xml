@@ -12,7 +12,7 @@
         android:targetSdkVersion="17" />
 
     <application
-        android:icon="@drawable/icon"
+        android:icon="@drawable/guyl"
         android:label="LemonRiser" >
         <activity
             android:name=".SampleGame"
