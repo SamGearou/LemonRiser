@@ -39,7 +39,7 @@ public abstract class Platform {
         for(int y = 0; y < 2500; y += diff[sec])
         {
             int randt = (int)(Math.random() * percent[sec].length);
-            int randx = (int)(Math.random() * 440 - 220);
+            int randx = (int)(Math.random() * 400 - 200);
             switch (percent[sec][randt])
             {
                 case 1:
@@ -55,7 +55,7 @@ public abstract class Platform {
                     a.add(new VanishPlatform(new Coord(240 + randx,y + location)));
                     break;
                 case 5:
-                    a.add(new RisePlatform(new Coord(240 + randx*.1,y + location), diff[sec], location + 2500));
+                    a.add(new RisePlatform(new Coord(240 + randx*.2,y + location), diff[sec], location + 2500));
                     y += diff[sec];
             }
         }

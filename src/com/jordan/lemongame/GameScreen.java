@@ -169,6 +169,12 @@ public class GameScreen extends Screen {
     }
 
 	private void updateGameOver(List<TouchEvent> touchEvents) {
+        if ((int)GameDisplay.guy.currentScore > Assets.highScore)
+        {
+            Assets.writeToMemory(Assets.highScoreFile, "" + (int)GameDisplay.guy.currentScore);
+            Assets.highScore = (int)GameDisplay.guy.currentScore;
+        }
+
         if (touchEvents.size() > 0 && pauseticks + 15 < ticks)
         {
             nullify();
@@ -181,7 +187,8 @@ public class GameScreen extends Screen {
         g.drawARGB(200, 0, 0, 0);
         g.drawString("GAME OVER", 240, 325, paintc);
         g.drawString("SCORE: " + (int)GameDisplay.guy.currentScore, 240, 400, paintc);
-		g.drawString("Tap to Retry", 240, 475, paintc);
+		g.drawString("Tap to Retry", 240, 550, paintc);
+        g.drawString("BEST: " + Assets.highScore, 240, 475, paintc);
 	}
 
     @Override
