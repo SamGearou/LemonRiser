@@ -45,7 +45,7 @@ public class GameScreen extends Screen {
         paintl.setTextSize(30);
         paintl.setTextAlign(Paint.Align.LEFT);
         paintl.setAntiAlias(true);
-        paintl.setColor(Color.GRAY);
+        paintl.setColor(Color.rgb(74, 74, 74));
 	}
 
 
