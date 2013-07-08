@@ -17,19 +17,17 @@ public class LoadingScreen extends Screen {
         String ike = "";
         if(Assets.ike) ike = "ike";
 
-		Assets.menu = g.newImage("menubg.png", ImageFormat.RGB565);
 		Assets.background = g.newImage("gamebg.png", ImageFormat.RGB565);
 
-        Assets.guy = g.newImage("guy.png", ImageFormat.RGB565);
-        Assets.guye = g.newImage("guye.jpg", ImageFormat.RGB565);
-        Assets.guys = g.newImage("guys.jpg", ImageFormat.RGB565);
-        Assets.guyr = g.newImage("guyr.jpg", ImageFormat.RGB565);
-        Assets.guyl = g.newImage("guyl.jpg", ImageFormat.RGB565);
+        Assets.guye = g.newImage("guye.png", ImageFormat.RGB565);
+        Assets.guys = g.newImage("guys.png", ImageFormat.RGB565);
+        Assets.guyr = g.newImage("guyr.png", ImageFormat.RGB565);
+        Assets.guyl = g.newImage("guyl.png", ImageFormat.RGB565);
 
-        Assets.basicplat = g.newImage("basicplat" + ike + ".png", ImageFormat.RGB565);
-        Assets.movingplat = g.newImage("movingplat" + ike + ".png", ImageFormat.RGB565);
-        Assets.vanishplat = g.newImage("vanishplat" + ike + ".png", ImageFormat.RGB565);
-        Assets.superplat = g.newImage("superplat" + ike + ".png", ImageFormat.RGB565);
+        Assets.basicplat = g.newImage("basicplat.png", ImageFormat.RGB565);
+        Assets.movingplat = g.newImage("movingplat.png", ImageFormat.RGB565);
+        Assets.vanishplat = g.newImage("vanishplat.png", ImageFormat.RGB565);
+        Assets.superplat = g.newImage("superplat.png", ImageFormat.RGB565);
 
 		//This is how you would load a sound if you had one.
 		//Assets.click = game.getAudio().createSound("explode.ogg");

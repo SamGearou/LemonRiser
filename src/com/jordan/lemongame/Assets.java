@@ -6,10 +6,15 @@ public class Assets {
 
     public static boolean ike = true;
 	
-	public static Image menu, splash, background;// character, character2, character3, heliboy, heliboy2, heliboy3, heliboy4, heliboy5;
-	//public static Sound click;
-	//public static Music theme;
-    public static Image guy, basicplat, guye, guys, guyl, guyr, movingplat, vanishplat,superplat;
+	public static Image splash, background;;
+    public static Image guye, guys, guyl, guyr;
+    public static Image basicplat, movingplat, vanishplat, superplat;
+
+    public static Image splashdef, backgrounddef;
+    public static Image guyedef, guysdef, guyldef, guyrdef;
+    public static Image basicplatdef, movingplatdef, vanishplatdef, superplatdef;
+    //public static Sound click;
+    //public static Music theme;
 	
 	public static void load(SampleGame sampleGame) {
 
