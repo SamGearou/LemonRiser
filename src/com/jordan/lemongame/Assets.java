@@ -1,6 +1,8 @@
 package com.jordan.lemongame;
 
 import com.jordan.framework.Image;
+import com.jordan.framework.Music;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -30,13 +32,13 @@ public class Assets {
 
 
     //public static Sound click;
-    //public static Music theme;
+    public static Music theme;
 
 	public static void load(SampleGame sampleGame) {
-		//theme = sampleGame.getAudio().createMusic("menutheme.mp3");
-		//theme.setLooping(true);
-		//theme.setVolume(0.85f);
-		//theme.play();
+		theme = sampleGame.getAudio().createMusic("DonutPlains.mid");
+		theme.setLooping(true);
+		theme.setVolume(0.85f);
+		theme.play();
 	}
 
     public static void reloadImages()
