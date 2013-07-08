@@ -35,7 +35,8 @@ public class Assets {
     public static Music theme;
 
 	public static void load(SampleGame sampleGame) {
-		theme = sampleGame.getAudio().createMusic("DonutPlains.mid");
+		//theme = sampleGame.getAudio().createMusic("DonutPlains.mid");
+        theme = sampleGame.getAudio().createMusic("SherbetLand.mid");
 		theme.setLooping(true);
 		theme.setVolume(0.85f);
 		theme.play();
