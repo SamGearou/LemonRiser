@@ -36,6 +36,7 @@ public class LoadingScreen extends Screen {
         Assets.superplatike = g.newImage("superplatike.png", ImageFormat.RGB565);
         Assets.riseplatike = g.newImage("riseplat.png", ImageFormat.RGB565);
 
+        Assets.ike = true;
         Assets.reloadImages();
 
 		//This is how you would load a sound if you had one.

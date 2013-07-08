@@ -4,7 +4,7 @@ import com.jordan.framework.Image;
 
 public class Assets {
 
-    public static boolean ike = true;
+    public static boolean ike = false;
 	
 	public static Image splash, background;
     public static Image guye, guys, guyl, guyr;
