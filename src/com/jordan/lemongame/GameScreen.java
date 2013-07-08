@@ -18,7 +18,6 @@ public class GameScreen extends Screen {
 
 	GameState state = GameState.Ready;
 
-	private Image guy, basicplat;
 	private Animation anim, hanim;
     private int ticks = 0;
     private final int OFFSET = 30;
@@ -29,9 +28,6 @@ public class GameScreen extends Screen {
 		super(game);
 
 		// Initialize game objects here
-
-		guy = Assets.guy;
-        basicplat = Assets.basicplat;
 
         //how to animate
 		/*hanim = new Animation();
@@ -161,8 +157,6 @@ public class GameScreen extends Screen {
 		// Set all variables to null, recreate them in the constructor.
 		paintc = null;
         paintl = null;
-		guy = null;
-        basicplat = null;
 		anim = null;
 		hanim = null;
 
