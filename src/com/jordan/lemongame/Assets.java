@@ -39,7 +39,7 @@ public class Assets {
         theme = sampleGame.getAudio().createMusic("SherbetLand.mid");
 		theme.setLooping(true);
 		theme.setVolume(0.85f);
-		theme.play();
+		//theme.play();
 	}
 
     public static void toggleMusic()

@@ -48,6 +48,8 @@ public class LoadingScreen extends Screen {
             e.printStackTrace();
         }
 
+        Assets.theme.play();
+
 		//This is how you would load a sound if you had one
 		//Assets.click = game.getAudio().createSound("explode.ogg");
 		

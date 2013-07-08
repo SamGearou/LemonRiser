@@ -120,7 +120,7 @@ public class GameScreen extends Screen {
                 g.drawImage(Assets.basicplat, (int)p.c.x - Assets.basicplat.getWidth()/2, (int)(800 - (p.c.y - GameDisplay.guy.deathHeight)) - Assets.basicplat.getHeight()+OFFSET);
         }
 
-        g.drawString((int)GameDisplay.guy.currentScore + "", 140, 37, paintl);
+        g.drawString((int)GameDisplay.guy.currentScore + "", 140, 35, paintl);
     }
 
 
