@@ -146,8 +146,16 @@ public class GameScreen extends Screen {
     }
 
 	private void updatePaused(List<TouchEvent> touchEvents) {
-        if (touchEvents.size() > 0 && touchEvents.get(0).x > 430 && touchEvents.get(0).y > 750)
-            Assets.reloadImages();
+        if (Assets.cheats)
+        {
+            if (touchEvents.size() > 0 && touchEvents.get(0).x > 430 && touchEvents.get(0).y > 750)
+                Assets.reloadImages();
+            if (touchEvents.size() > 0 && touchEvents.get(0).x < 50 && touchEvents.get(0).y > 750)
+            {
+                GameDisplay.guy.c.y += 40000;
+                GameDisplay.guy.velocity = GameDisplay.guy.getMV();
+            }
+        }
 
 		if (touchEvents.size() > 0 && pauseticks + 15 < ticks)
 				resume();

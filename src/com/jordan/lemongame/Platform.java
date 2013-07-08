@@ -56,6 +56,7 @@ public abstract class Platform {
                     break;
                 case 5:
                     a.add(new RisePlatform(new Coord(240 + randx*.1,y + location), diff[sec], location + 2500));
+                    y += diff[sec];
             }
         }
         return a;

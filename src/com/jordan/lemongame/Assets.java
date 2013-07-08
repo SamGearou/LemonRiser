@@ -4,7 +4,8 @@ import com.jordan.framework.Image;
 
 public class Assets {
 
-    public static boolean ike = false;
+    public static boolean ike = true;
+    public static boolean cheats = true;
 	
 	public static Image splash, background;
     public static Image guye, guys, guyl, guyr;
@@ -17,6 +18,7 @@ public class Assets {
     public static Image backgroundike;
     public static Image guyeike, guysike, guylike, guyrike;
     public static Image basicplatike, movingplatike, vanishplatike, superplatike, riseplatike;
+
 
     //public static Sound click;
     //public static Music theme;
