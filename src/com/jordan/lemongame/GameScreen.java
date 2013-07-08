@@ -64,6 +64,8 @@ public class GameScreen extends Screen {
 
                     if (event.x < 50 && event.y < 50)
                         pause();
+                    if (event.x > 430 && event.y < 50)
+                        Assets.toggleMusic();
                     if (event.x >= 240)
                         right = true;
                     if (event.x < 240)
