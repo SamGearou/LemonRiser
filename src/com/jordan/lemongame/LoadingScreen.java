@@ -13,6 +13,7 @@ public class LoadingScreen extends Screen {
 	@Override
 	public void update(float deltaTime) {
 		Graphics g = game.getGraphics();
+        long startTime = System.currentTimeMillis();
 
 		Assets.backgrounddef = g.newImage("gamebg.png", ImageFormat.RGB565);
         Assets.guyedef = g.newImage("guye.png", ImageFormat.RGB565);
@@ -25,7 +26,7 @@ public class LoadingScreen extends Screen {
         Assets.superplatdef = g.newImage("superplat.png", ImageFormat.RGB565);
         Assets.riseplatdef = g.newImage("riseplat.png", ImageFormat.RGB565);
 
-        Assets.backgroundike = g.newImage("gamebg.png", ImageFormat.RGB565);
+        Assets.backgroundike = g.newImage("gamebgike.png", ImageFormat.RGB565);
         Assets.guyeike = g.newImage("guye.png", ImageFormat.RGB565);
         Assets.guysike = g.newImage("guys.png", ImageFormat.RGB565);
         Assets.guyrike = g.newImage("guyr.png", ImageFormat.RGB565);
@@ -38,6 +39,14 @@ public class LoadingScreen extends Screen {
 
         Assets.ike = !Assets.ike;
         Assets.reloadImages();
+
+        long t = (System.currentTimeMillis() - startTime);
+        try {
+            if (t < 3000)
+                Thread.sleep(3000 - t);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 		//This is how you would load a sound if you had one
 		//Assets.click = game.getAudio().createSound("explode.ogg");
