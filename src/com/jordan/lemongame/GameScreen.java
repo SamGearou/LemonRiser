@@ -112,6 +112,8 @@ public class GameScreen extends Screen {
                 g.drawImage(Assets.superplat, (int)p.c.x - Assets.basicplat.getWidth()/2, (int)(800 - (p.c.y - GameDisplay.guy.deathHeight)) - Assets.basicplat.getHeight()+OFFSET);
             else if (p instanceof MovingPlatform)
                 g.drawImage(Assets.movingplat, (int)p.c.x - Assets.basicplat.getWidth()/2, (int)(800 - (p.c.y - GameDisplay.guy.deathHeight)) - Assets.basicplat.getHeight()+OFFSET);
+            else if (p instanceof RisePlatform)
+                g.drawImage(Assets.riseplat, (int)p.c.x - Assets.basicplat.getWidth()/2, (int)(800 - (p.c.y - GameDisplay.guy.deathHeight)) - Assets.basicplat.getHeight()+OFFSET);
             else
                 g.drawImage(Assets.basicplat, (int)p.c.x - Assets.basicplat.getWidth()/2, (int)(800 - (p.c.y - GameDisplay.guy.deathHeight)) - Assets.basicplat.getHeight()+OFFSET);
         }
