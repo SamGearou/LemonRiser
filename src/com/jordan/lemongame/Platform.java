@@ -31,7 +31,7 @@ public abstract class Platform {
                 {1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,4,4},
                 {1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,4,4},
                 {1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,4,4,4},
-                {1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,4,4,4,4,5},
+                {1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,4,4,4,4},
                 {1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,4,4,4,4,4,5},
                 {1,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,4,4,4,4,4,4,4,5,5},
                 {1,1,1,2,2,2,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,5,5,5,5}};
@@ -40,7 +40,6 @@ public abstract class Platform {
         {
             int randt = (int)(Math.random() * percent[sec].length);
             int randx = (int)(Math.random() * 440 - 220);
-            boolean b = false;
             switch (percent[sec][randt])
             {
                 case 1:
@@ -56,10 +55,8 @@ public abstract class Platform {
                     a.add(new VanishPlatform(new Coord(240 + randx,y + location)));
                     break;
                 case 5:
-                    b = true;
                     a.add(new RisePlatform(new Coord(240 + randx*.1,y + location), diff[sec], location + 2500));
             }
-            if (b) break;
         }
         return a;
     }
