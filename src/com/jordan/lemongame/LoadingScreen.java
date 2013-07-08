@@ -34,7 +34,7 @@ public class LoadingScreen extends Screen {
         Assets.movingplatike = g.newImage("movingplatike.png", ImageFormat.RGB565);
         Assets.vanishplatike = g.newImage("vanishplatike.png", ImageFormat.RGB565);
         Assets.superplatike = g.newImage("superplatike.png", ImageFormat.RGB565);
-        Assets.riseplatike = g.newImage("riseplat.png", ImageFormat.RGB565);
+        Assets.riseplatike = g.newImage("riserplatike.png", ImageFormat.RGB565);
 
         Assets.ike = false;
         Assets.reloadImages();
