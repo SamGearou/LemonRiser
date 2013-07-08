@@ -27,10 +27,10 @@ public class LoadingScreen extends Screen {
         Assets.riseplatdef = g.newImage("riseplat.png", ImageFormat.RGB565);
 
         Assets.backgroundike = g.newImage("gamebgike.png", ImageFormat.RGB565);
-        Assets.guyeike = g.newImage("guye.png", ImageFormat.RGB565);
-        Assets.guysike = g.newImage("guys.png", ImageFormat.RGB565);
-        Assets.guyrike = g.newImage("guyr.png", ImageFormat.RGB565);
-        Assets.guylike = g.newImage("guyl.png", ImageFormat.RGB565);
+        Assets.guyeike = g.newImage("guyeike.png", ImageFormat.RGB565);
+        Assets.guysike = g.newImage("guysike.png", ImageFormat.RGB565);
+        Assets.guyrike = g.newImage("guyrike.png", ImageFormat.RGB565);
+        Assets.guylike = g.newImage("guylike.png", ImageFormat.RGB565);
         Assets.basicplatike = g.newImage("basicplatike.png", ImageFormat.RGB565);
         Assets.movingplatike = g.newImage("movingplatike.png", ImageFormat.RGB565);
         Assets.vanishplatike = g.newImage("vanishplatike.png", ImageFormat.RGB565);
