@@ -2,6 +2,7 @@ package com.jordan.lemongame;
 
 import com.jordan.framework.Image;
 import com.jordan.framework.Music;
+import com.jordan.framework.Sound;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -30,7 +31,8 @@ public class Assets {
     public static Image guyeike, guysike, guylike, guyrike;
     public static Image basicplatike, movingplatike, vanishplatike, superplatike, riseplatike;
 
-    //public static Sound click;
+    public static Sound bounce;
+    public static Sound superBounce;
     public static Music theme;
 
 	public static void load(SampleGame sampleGame) {
@@ -38,6 +40,8 @@ public class Assets {
 		theme.setLooping(true);
 		theme.setVolume(0.85f);
 		//theme.play();
+        bounce = sampleGame.getAudio().createSound("funny-bounce.mp3");
+        superBounce = sampleGame.getAudio().createSound("countdick.m4a");
 	}
 
     public static void toggleMusic()

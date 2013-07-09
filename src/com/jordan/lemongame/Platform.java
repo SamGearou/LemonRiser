@@ -71,6 +71,8 @@ public abstract class Platform {
     public void basicCollisionAction(ScribbleGuy guy)
     {
         guy.velocity = guy.getMV();
+        if (Assets.theme.isPlaying())
+            Assets.bounce.play(0.85f);
     }
 
 }

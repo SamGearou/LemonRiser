@@ -14,6 +14,9 @@ public class SuperPlatform extends Platform {
             guy.velocity = guy.getMV() * 7.01;
         else
             guy.velocity = guy.getMV() * 2.98;
+
+        if (Assets.theme.isPlaying())
+            Assets.superBounce.play(0.85f);
     }
 
     @Override
