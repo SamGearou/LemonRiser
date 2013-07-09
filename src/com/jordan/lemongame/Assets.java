@@ -27,7 +27,6 @@ public class Assets {
     //constant for handling time, higher means game runs faster
     public static final double TIME = 0.57;
     public static final float VOLUME = 0.35f;
-    public static boolean loadedMusic = false;
 
 	public static Image splash, background;
     public static Image guye, guys, guyl, guyr;

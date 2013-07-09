@@ -22,6 +22,7 @@ public class SampleGame extends AndroidGame {
 	public Screen getInitScreen() {
 
         Assets.fileLocation = getFilesDir();
+        Assets.loadSound(this);
 
 		return new SplashLoadingScreen(this);
 	}
@@ -34,15 +35,13 @@ public class SampleGame extends AndroidGame {
 	@Override
 	public void onResume() {
 		super.onResume();
-        if (Assets.loadedMusic)
-		    Assets.theme.play();
+		Assets.theme.play();
 	}
 
 	@Override
 	public void onPause() {
 		super.onPause();
-        if (Assets.theme != null)
-		    Assets.theme.pause();
+		Assets.theme.pause();
 	}
 	
 	
