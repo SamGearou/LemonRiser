@@ -21,7 +21,7 @@ public class ScribbleGuy {
     public final double gravity = -0.5;
     public final double resistance = 0.75;
     public final double maxMovement = 8;
-    public final double maxVelocity = 18;
+    public final double maxVelocity = 17;
     public final double COLLISION_HEIGHT = 20;
     public final double COLLISION_WIDTH = -10 + Assets.basicplat.getWidth()/2 + Assets.guyr.getWidth();
     public final double DEATH_BUFFER = 400;
