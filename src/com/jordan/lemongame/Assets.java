@@ -13,7 +13,7 @@ import java.io.IOException;
 public class Assets {
 
     public static boolean ike = true;
-    public static boolean cheats = true;
+    public static boolean cheats = false;
     public static final String highScoreFile = "high1.txt";
     public static File fileLocation;
     public static int highScore = Integer.parseInt(readFromMemory(highScoreFile));
@@ -22,20 +22,18 @@ public class Assets {
     public static Image guye, guys, guyl, guyr;
     public static Image basicplat, movingplat, vanishplat, superplat, riseplat;
 
-    public static Image backgrounddef;
+    /*public static Image backgrounddef;
     public static Image guyedef, guysdef, guyldef, guyrdef;
-    public static Image basicplatdef, movingplatdef, vanishplatdef, superplatdef, riseplatdef;
+    public static Image basicplatdef, movingplatdef, vanishplatdef, superplatdef, riseplatdef;*/
 
     public static Image backgroundike;
     public static Image guyeike, guysike, guylike, guyrike;
     public static Image basicplatike, movingplatike, vanishplatike, superplatike, riseplatike;
 
-
     //public static Sound click;
     public static Music theme;
 
 	public static void load(SampleGame sampleGame) {
-		//theme = sampleGame.getAudio().createMusic("DonutPlains.mid");
         theme = sampleGame.getAudio().createMusic("SherbetLand.mid");
 		theme.setLooping(true);
 		theme.setVolume(0.85f);
@@ -51,9 +49,9 @@ public class Assets {
 
     public static void reloadImages()
     {
-        ike = !ike;
-        if (ike)
-        {
+        //ike = !ike;
+        //if (ike)
+        //{
             background = backgroundike;
             guye = guyeike;
             guyl = guylike;
@@ -64,8 +62,8 @@ public class Assets {
             movingplat = movingplatike;
             superplat = superplatike;
             riseplat = riseplatike;
-        }
-        else
+       // }
+        /*else
         {
             background = backgrounddef;
             guye = guyedef;
@@ -77,7 +75,7 @@ public class Assets {
             movingplat = movingplatdef;
             superplat = superplatdef;
             riseplat = riseplatdef;
-        }
+        }*/
 
     }
 

@@ -15,7 +15,7 @@ public class LoadingScreen extends Screen {
 		Graphics g = game.getGraphics();
         long startTime = System.currentTimeMillis();
 
-		Assets.backgrounddef = g.newImage("gamebg.png", ImageFormat.RGB565);
+		/*Assets.backgrounddef = g.newImage("gamebg.png", ImageFormat.RGB565);
         Assets.guyedef = g.newImage("guye.png", ImageFormat.RGB565);
         Assets.guysdef = g.newImage("guys.png", ImageFormat.RGB565);
         Assets.guyrdef = g.newImage("guyr.png", ImageFormat.RGB565);
@@ -24,7 +24,7 @@ public class LoadingScreen extends Screen {
         Assets.movingplatdef = g.newImage("movingplat.png", ImageFormat.RGB565);
         Assets.vanishplatdef = g.newImage("vanishplat.png", ImageFormat.RGB565);
         Assets.superplatdef = g.newImage("superplat.png", ImageFormat.RGB565);
-        Assets.riseplatdef = g.newImage("riseplat.png", ImageFormat.RGB565);
+        Assets.riseplatdef = g.newImage("riseplat.png", ImageFormat.RGB565);*/
 
         Assets.backgroundike = g.newImage("gamebgike.png", ImageFormat.RGB565);
         Assets.guyeike = g.newImage("guyeike.png", ImageFormat.RGB565);
