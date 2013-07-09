@@ -30,7 +30,7 @@ public class Assets {
         theme = sampleGame.getAudio().createMusic("SherbetLand.mid");
 		theme.setLooping(true);
 		theme.setVolume(0.85f);
-        bounce = sampleGame.getAudio().createSound("funny-bounce.mp3");
+        bounce = sampleGame.getAudio().createSound("bounce.mp3");
         superBounce = sampleGame.getAudio().createSound("countdick.m4a");
 	}
 
