@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class Assets {
 //gumm
-    public static boolean cheats = true;
+    public static boolean cheats = false;
     public static final String highScoreFile = "high1.txt";
     public static File fileLocation;
     public static int highScore = Integer.parseInt(readFromMemory(highScoreFile));
