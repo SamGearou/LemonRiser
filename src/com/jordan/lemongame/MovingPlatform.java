@@ -21,11 +21,11 @@ public class MovingPlatform extends Platform {
     public void update(float deltaTime) {
         if (right)
         {
-            c.x += 2 * deltaTime;
+            c.x += 1 * deltaTime;
         }
         else
         {
-            c.x -= 2;
+            c.x -= 1 * deltaTime;
         }
         if (c.x >= center + 100)
             right = false;
