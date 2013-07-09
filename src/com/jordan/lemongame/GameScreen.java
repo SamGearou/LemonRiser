@@ -98,7 +98,7 @@ public class GameScreen extends Screen {
         int x = (int) GameDisplay.guyCoord.x;
         int y = (int) GameDisplay.guyCoord.y;
         Image theguy = Assets.guyr;
-        if(GameDisplay.guy.velocity > GameDisplay.guy.maxVelocity)
+        if(GameDisplay.guy.velocity > GameDisplay.guy.getMV())
             theguy = Assets.guye;
         else if (GameDisplay.guy.c.y - GameDisplay.guy.deathHeight < 300 && GameDisplay.guy.velocity < -4)
             theguy = Assets.guys;
