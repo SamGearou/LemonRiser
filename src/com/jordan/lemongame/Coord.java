@@ -1,8 +1,6 @@
 package com.jordan.lemongame;
 
-/**
- * Created by Owner on 6/29/13.
- */
+//easy way to store coordinates
 public class Coord {
 
     public double x, y;

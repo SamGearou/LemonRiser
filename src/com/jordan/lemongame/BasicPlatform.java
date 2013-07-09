@@ -1,19 +1,19 @@
 package com.jordan.lemongame;
 
-/**
- * Created by Owner on 6/29/13.
- */
+//the yellow platform with basic action
 public class BasicPlatform extends Platform {
 
     public BasicPlatform(Coord c) {
         super(c);
     }
 
+    @Override
     public void onCollision(ScribbleGuy guy) {
         basicCollisionAction(guy);
     }
 
-    public void update()
+    @Override
+    public void update(float deltaTime)
     {
 
     }

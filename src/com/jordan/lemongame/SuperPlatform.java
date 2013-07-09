@@ -1,8 +1,6 @@
 package com.jordan.lemongame;
 
-/**
- * Created by Owner on 7/1/13.
- */
+//the black super high platform
 public class SuperPlatform extends Platform {
     public SuperPlatform(Coord c) {
         super(c);
@@ -11,21 +9,18 @@ public class SuperPlatform extends Platform {
     @Override
     public void onCollision(ScribbleGuy guy) {
         if (Math.random() < 0.04)
-            guy.velocity = guy.getMV() * 7.01;
+            guy.velocity = guy.getMV() * 7.02;
         else
             guy.velocity = guy.getMV() * 2.98;
 
         if (Assets.theme.isPlaying())
         {
-            if (Assets.cheats)
-                Assets.superBounce.play(0.85f);
-            else
-                Assets.bounce.play(0.85f);
+            Assets.bounce.play(Assets.VOLUME);
         }
     }
 
     @Override
-    public void update() {
+    public void update(float deltaTime) {
 
     }
 }

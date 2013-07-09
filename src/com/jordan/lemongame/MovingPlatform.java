@@ -1,17 +1,14 @@
 package com.jordan.lemongame;
 
-/**
- * Created by Owner on 7/1/13.
- */
+//the blue moving platform
 public class MovingPlatform extends Platform {
 
-    public int s;
-    public int r = (int)(Math.random() + .5);
-    public boolean right = r == 1;
+    public int center;
+    public boolean right = Math.random() < .5;
 
     public MovingPlatform(Coord c) {
         super(c);
-        s = (int)c.x;
+        center = (int)c.x;
 
     }
 
@@ -21,18 +18,18 @@ public class MovingPlatform extends Platform {
     }
 
     @Override
-    public void update() {
+    public void update(float deltaTime) {
         if (right)
         {
-            c.x += 2;
+            c.x += 2 * deltaTime;
         }
         else
         {
             c.x -= 2;
         }
-        if (c.x >= s + 100)
+        if (c.x >= center + 100)
             right = false;
-        else if (c.x <= s - 100)
+        else if (c.x <= center - 100)
             right = true;
     }
 }

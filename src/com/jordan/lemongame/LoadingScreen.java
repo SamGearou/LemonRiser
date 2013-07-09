@@ -5,6 +5,7 @@ import com.jordan.framework.Graphics;
 import com.jordan.framework.Graphics.ImageFormat;
 import com.jordan.framework.Screen;
 
+//where all the images are loaded
 public class LoadingScreen extends Screen {
 	public LoadingScreen(Game game) {
 		super(game);
@@ -12,19 +13,11 @@ public class LoadingScreen extends Screen {
 
 	@Override
 	public void update(float deltaTime) {
-		Graphics g = game.getGraphics();
+
+        //makes sure the screen lasts 3 seconds
         long startTime = System.currentTimeMillis();
 
-        Assets.background = g.newImage("gamebgike.png", ImageFormat.RGB565);
-        Assets.guye = g.newImage("guyeike.png", ImageFormat.RGB565);
-        Assets.guys = g.newImage("guysike.png", ImageFormat.RGB565);
-        Assets.guyr = g.newImage("guyrike.png", ImageFormat.RGB565);
-        Assets.guyl = g.newImage("guylike.png", ImageFormat.RGB565);
-        Assets.basicplat = g.newImage("basicplatike.png", ImageFormat.RGB565);
-        Assets.movingplat = g.newImage("movingplatike.png", ImageFormat.RGB565);
-        Assets.vanishplat = g.newImage("vanishplatike.png", ImageFormat.RGB565);
-        Assets.superplat = g.newImage("superplatike.png", ImageFormat.RGB565);
-        Assets.riseplat = g.newImage("riserplatike.png", ImageFormat.RGB565);
+        Assets.loadImages(game);
 
         long t = (System.currentTimeMillis() - startTime);
         try {
@@ -34,10 +27,7 @@ public class LoadingScreen extends Screen {
             e.printStackTrace();
         }
 
-        Assets.theme.play();
-		
 		game.setScreen(new GameScreen(game));
-
 	}
 
 	@Override

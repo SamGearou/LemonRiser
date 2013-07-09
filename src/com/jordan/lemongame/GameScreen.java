@@ -11,6 +11,7 @@ import com.jordan.framework.Image;
 import com.jordan.framework.Input.TouchEvent;
 import com.jordan.framework.Screen;
 
+//this is the screen where the game is run
 public class GameScreen extends Screen {
 	enum GameState {
 		Ready, Running, Paused, GameOver
@@ -18,12 +19,12 @@ public class GameScreen extends Screen {
 
 	GameState state = GameState.Ready;
 
-	//private Animation anim, hanim;
-    private int ticks = 0;
-    private final int OFFSET = 30;
-    private int pauseticks;
-	Paint paintc, paintl;
+	Paint paintCenter, paintLeft;
     private boolean right = false, left = false;
+
+    private long ticks = 0;
+    private long pauseTicks;
+    private String framesCounter = "0";
 
 	public GameScreen(Game game) {
 		super(game);
@@ -34,20 +35,17 @@ public class GameScreen extends Screen {
 		hanim.addFrame(heliboy3, 100);
 		hanim.addFrame(heliboy2, 100);*/
 
-		// Defining a paint object
-		paintc = new Paint();
-		paintc.setTextSize(30);
-		paintc.setTextAlign(Paint.Align.CENTER);
-		paintc.setAntiAlias(true);
-		paintc.setColor(Color.YELLOW);
-
-        paintl = new Paint();
-        paintl.setTextSize(30);
-        paintl.setTextAlign(Paint.Align.LEFT);
-        paintl.setAntiAlias(true);
-        paintl.setColor(Color.rgb(74, 74, 74));
+		paintCenter = new Paint();
+		paintCenter.setTextSize(30);
+		paintCenter.setTextAlign(Paint.Align.CENTER);
+		paintCenter.setAntiAlias(true);
+		paintCenter.setColor(Color.YELLOW);
+        paintLeft = new Paint();
+        paintLeft.setTextSize(30);
+        paintLeft.setTextAlign(Paint.Align.LEFT);
+        paintLeft.setAntiAlias(true);
+        paintLeft.setColor(Color.rgb(74, 74, 74));
 	}
-
 
 
     private void updateRunning(List<TouchEvent> touchEvents, float deltaTime) {
@@ -58,14 +56,13 @@ public class GameScreen extends Screen {
             switch(event.type)
             {
                 case TouchEvent.TOUCH_DOWN:
-                    if (event.x > 430 && event.y < 50)
+                    if (event.x > 430 && event.y < 50) //music toggler
                         Assets.toggleMusic();
+                    if (event.x < 50 && event.y < 50) //pauser
+                        pause();
                 case TouchEvent.TOUCH_DRAGGED:
                     right = false;
                     left = false;
-
-                    if (event.x < 50 && event.y < 50)
-                        pause();
                     if (event.x >= 240)
                         right = true;
                     if (event.x < 240)
@@ -75,18 +72,21 @@ public class GameScreen extends Screen {
                     right = false;
                     left = false;
             }
-
         }
 
-        //2. update
-        GameDisplay.update(right,left);
+        //2. update the game
+        GameDisplay.update(right,left,deltaTime);
 
         //3. check for death
         if (!GameDisplay.guy.checkDeath())
         {
             state = GameState.GameOver;
-            pauseticks = ticks;
+            pauseTicks = ticks;
         }
+
+        //updates frame counter
+        if (ticks % 100 == 1)
+            framesCounter = " deltaTime: " + deltaTime;
 
         //anim.update(10);
     }
@@ -95,8 +95,7 @@ public class GameScreen extends Screen {
         g.clearScreen(Color.BLACK);
         g.drawImage(Assets.background, 0,0);
 
-        int x = (int) GameDisplay.guyCoord.x;
-        int y = (int) GameDisplay.guyCoord.y;
+        //shows the guy. the if chooses the emotion
         Image theguy = Assets.guyr;
         if(GameDisplay.guy.velocity > GameDisplay.guy.getMV())
             theguy = Assets.guye;
@@ -104,78 +103,71 @@ public class GameScreen extends Screen {
             theguy = Assets.guys;
         else if (GameDisplay.guy.movement < 0)
             theguy = Assets.guyl;
-        g.drawImage(theguy, x - Assets.guyr.getWidth()/2,y - Assets.guyr.getHeight()/2);
+        g.drawImage(theguy,  (int) GameDisplay.guyCoord.x - Assets.guyr.getWidth()/2,(int) GameDisplay.guyCoord.y - Assets.guyr.getHeight()/2);
 
+        //draws platforms
         for(Platform p: GameDisplay.platforms)
         {
             if (p instanceof VanishPlatform)
-                g.drawImage(Assets.vanishplat, (int)p.c.x - Assets.basicplat.getWidth()/2, (int)(800 - (p.c.y - GameDisplay.guy.deathHeight)) - Assets.basicplat.getHeight()+OFFSET);
+                g.drawImage(Assets.vanishplat, (int)p.c.x - Assets.basicplat.getWidth()/2, (int)(800 - (p.c.y - GameDisplay.guy.deathHeight)) - Assets.basicplat.getHeight()+30);
             else if (p instanceof SuperPlatform)
-                g.drawImage(Assets.superplat, (int)p.c.x - Assets.basicplat.getWidth()/2, (int)(800 - (p.c.y - GameDisplay.guy.deathHeight)) - Assets.basicplat.getHeight()+OFFSET);
+                g.drawImage(Assets.superplat, (int)p.c.x - Assets.basicplat.getWidth()/2, (int)(800 - (p.c.y - GameDisplay.guy.deathHeight)) - Assets.basicplat.getHeight()+30);
             else if (p instanceof MovingPlatform)
-                g.drawImage(Assets.movingplat, (int)p.c.x - Assets.basicplat.getWidth()/2, (int)(800 - (p.c.y - GameDisplay.guy.deathHeight)) - Assets.basicplat.getHeight()+OFFSET);
+                g.drawImage(Assets.movingplat, (int)p.c.x - Assets.basicplat.getWidth()/2, (int)(800 - (p.c.y - GameDisplay.guy.deathHeight)) - Assets.basicplat.getHeight()+30);
             else if (p instanceof RisePlatform)
-                g.drawImage(Assets.riseplat, (int)p.c.x - Assets.basicplat.getWidth()/2, (int)(800 - (p.c.y - GameDisplay.guy.deathHeight)) - Assets.basicplat.getHeight()+OFFSET);
+                g.drawImage(Assets.riseplat, (int)p.c.x - Assets.basicplat.getWidth()/2, (int)(800 - (p.c.y - GameDisplay.guy.deathHeight)) - Assets.basicplat.getHeight()+30);
             else
-                g.drawImage(Assets.basicplat, (int)p.c.x - Assets.basicplat.getWidth()/2, (int)(800 - (p.c.y - GameDisplay.guy.deathHeight)) - Assets.basicplat.getHeight()+OFFSET);
+                g.drawImage(Assets.basicplat, (int)p.c.x - Assets.basicplat.getWidth()/2, (int)(800 - (p.c.y - GameDisplay.guy.deathHeight)) - Assets.basicplat.getHeight()+30);
         }
 
-        g.drawString((int)GameDisplay.guy.currentScore + "", 140, 35, paintl);
+        //shows score, and deltaTime
+        String scoreString = (int)GameDisplay.guy.currentScore + "";
+        if (Assets.cheats)
+            scoreString += " " + framesCounter;
+        g.drawString(scoreString, 140, 35, paintLeft);
     }
 
 
-
-
-
-
-
 	private void updateReady(List<TouchEvent> touchEvents) {
-
-		// This example starts with a "Ready" screen.
-		// When the user touches the screen, the game begins.
-		// state now becomes GameState.Running.
-		// Now the updateRunning() method will be called!
-
+        //starts when they tap the phone
 		if (touchEvents.size() > 0)
 			state = GameState.Running;
 	}
     private void drawReadyUI() {
         Graphics g = game.getGraphics();
         g.drawImage(Assets.background, 0,0);
-
         g.drawARGB(200, 0, 0, 0);
-        g.drawString("Tap to Start", 240, 400, paintc);
+        g.drawString("Tap to Start", 240, 400, paintCenter);
     }
 
 	private void updatePaused(List<TouchEvent> touchEvents) {
         if (Assets.cheats && touchEvents.size() > 0 && touchEvents.get(0).x < 50 && touchEvents.get(0).y > 750)
-        {
+        {//cheats!!!
             GameDisplay.guy.c.y += 40000;
             GameDisplay.guy.velocity = GameDisplay.guy.getMV();
         }
 
-
-		if (touchEvents.size() > 0 && pauseticks + 15 < ticks)
+        //resumes when the phone is tapped
+		if (touchEvents.size() > 0 && pauseTicks + 15 < ticks)
 				resume();
 	}
     private void drawPausedUI() {
         Graphics g = game.getGraphics();
         drawRunningUI();
-        // Darken the entire screen so you can display the Paused screen.
         g.drawARGB(200, 0, 0, 0);
-        g.drawString("Tap to Resume", 240, 400, paintc);
+        g.drawString("Tap to Resume", 240, 400, paintCenter);
     }
 
 	private void updateGameOver(List<TouchEvent> touchEvents) {
         if ((int)GameDisplay.guy.currentScore > Assets.highScore)
-        {
+        {//writes highscore
             Assets.writeToMemory(Assets.highScoreFile, "" + (int)GameDisplay.guy.currentScore);
             Assets.highScore = (int)GameDisplay.guy.currentScore;
         }
 
-        if (touchEvents.size() > 0 && pauseticks + 15 < ticks)
-        {
-            nullify();
+        if (touchEvents.size() > 0 && pauseTicks + 15 < ticks)
+        {//resets the game on a tap
+            GameDisplay.reset();
 			game.setScreen(new GameScreen(game));
         }
 	}
@@ -183,10 +175,10 @@ public class GameScreen extends Screen {
 		Graphics g = game.getGraphics();
         drawRunningUI();
         g.drawARGB(200, 0, 0, 0);
-        g.drawString("GAME OVER", 240, 325, paintc);
-        g.drawString("SCORE: " + (int)GameDisplay.guy.currentScore, 240, 400, paintc);
-		g.drawString("Tap to Retry", 240, 550, paintc);
-        g.drawString("BEST: " + Assets.highScore, 240, 475, paintc);
+        g.drawString("GAME OVER", 240, 325, paintCenter);
+        g.drawString("SCORE: " + (int)GameDisplay.guy.currentScore, 240, 400, paintCenter);
+		g.drawString("Tap to Retry", 240, 550, paintCenter);
+        g.drawString("BEST: " + Assets.highScore, 240, 475, paintCenter);
 	}
 
     @Override
@@ -215,27 +207,12 @@ public class GameScreen extends Screen {
             drawGameOverUI();
     }
 
-
-    private void nullify() {
-
-        // Set all variables to null, recreate them in the constructor.
-        paintc = null;
-        paintl = null;
-        //anim = null;
-        //hanim = null;
-
-        GameDisplay.reset();
-
-        // Call garbage collector to clean up memory.
-        System.gc();
-    }
-
 	@Override
 	public void pause() {
 		if (state == GameState.Running)
         {
 			state = GameState.Paused;
-            pauseticks = ticks;
+            pauseTicks = ticks;
         }
 
 	}

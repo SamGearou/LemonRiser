@@ -1,15 +1,13 @@
 package com.jordan.lemongame;
 
-/**
- * Created by Owner on 7/7/13.
- */
+//the red platform that rises
 public class RisePlatform extends Platform {
 
     public int diff, end;
 
-    public RisePlatform(Coord c, int diff, int end) {
+    public RisePlatform(Coord c, int gap, int end) {
         super(c);
-        this.diff = diff;
+        this.diff = gap;
         this.end = end;
     }
 
@@ -23,7 +21,7 @@ public class RisePlatform extends Platform {
     }
 
     @Override
-    public void update() {
+    public void update(float deltaTime) {
 
     }
 }

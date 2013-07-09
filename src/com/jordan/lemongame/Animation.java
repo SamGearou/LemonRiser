@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.jordan.framework.Image;
 
-
+//this class is unused
 public class Animation {
 
 	private ArrayList frames;
