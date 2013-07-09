@@ -72,7 +72,7 @@ public abstract class Platform {
     {
         guy.velocity = guy.getMV();
         if (Assets.theme.isPlaying())
-            Assets.bounce.play(0.85f);
+            Assets.bounce.play(0.65f);
     }
 
 }
