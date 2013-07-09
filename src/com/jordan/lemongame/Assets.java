@@ -13,7 +13,6 @@ import java.io.IOException;
 
 public class Assets {
 
-    public static boolean ike = true;
     public static boolean cheats = false;
     public static final String highScoreFile = "high1.txt";
     public static File fileLocation;
@@ -23,14 +22,6 @@ public class Assets {
     public static Image guye, guys, guyl, guyr;
     public static Image basicplat, movingplat, vanishplat, superplat, riseplat;
 
-    /*public static Image backgrounddef;
-    public static Image guyedef, guysdef, guyldef, guyrdef;
-    public static Image basicplatdef, movingplatdef, vanishplatdef, superplatdef, riseplatdef;*/
-
-    public static Image backgroundike;
-    public static Image guyeike, guysike, guylike, guyrike;
-    public static Image basicplatike, movingplatike, vanishplatike, superplatike, riseplatike;
-
     public static Sound bounce;
     public static Sound superBounce;
     public static Music theme;
@@ -39,7 +30,6 @@ public class Assets {
         theme = sampleGame.getAudio().createMusic("SherbetLand.mid");
 		theme.setLooping(true);
 		theme.setVolume(0.85f);
-		//theme.play();
         bounce = sampleGame.getAudio().createSound("funny-bounce.mp3");
         superBounce = sampleGame.getAudio().createSound("countdick.m4a");
 	}
@@ -49,38 +39,6 @@ public class Assets {
         if (theme.isPlaying())
             theme.pause();
         else theme.play();
-    }
-
-    public static void reloadImages()
-    {
-        //ike = !ike;
-        //if (ike)
-        //{
-            background = backgroundike;
-            guye = guyeike;
-            guyl = guylike;
-            guys = guysike;
-            guyr = guyrike;
-            basicplat = basicplatike;
-            vanishplat = vanishplatike;
-            movingplat = movingplatike;
-            superplat = superplatike;
-            riseplat = riseplatike;
-       // }
-        /*else
-        {
-            background = backgrounddef;
-            guye = guyedef;
-            guyl = guyldef;
-            guys = guysdef;
-            guyr = guyrdef;
-            basicplat = basicplatdef;
-            vanishplat = vanishplatdef;
-            movingplat = movingplatdef;
-            superplat = superplatdef;
-            riseplat = riseplatdef;
-        }*/
-
     }
 
     public static void writeToMemory(String fileName, String text)

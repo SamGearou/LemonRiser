@@ -15,30 +15,16 @@ public class LoadingScreen extends Screen {
 		Graphics g = game.getGraphics();
         long startTime = System.currentTimeMillis();
 
-		/*Assets.backgrounddef = g.newImage("gamebg.png", ImageFormat.RGB565);
-        Assets.guyedef = g.newImage("guye.png", ImageFormat.RGB565);
-        Assets.guysdef = g.newImage("guys.png", ImageFormat.RGB565);
-        Assets.guyrdef = g.newImage("guyr.png", ImageFormat.RGB565);
-        Assets.guyldef = g.newImage("guyl.png", ImageFormat.RGB565);
-        Assets.basicplatdef = g.newImage("basicplat.png", ImageFormat.RGB565);
-        Assets.movingplatdef = g.newImage("movingplat.png", ImageFormat.RGB565);
-        Assets.vanishplatdef = g.newImage("vanishplat.png", ImageFormat.RGB565);
-        Assets.superplatdef = g.newImage("superplat.png", ImageFormat.RGB565);
-        Assets.riseplatdef = g.newImage("riseplat.png", ImageFormat.RGB565);*/
-
-        Assets.backgroundike = g.newImage("gamebgike.png", ImageFormat.RGB565);
-        Assets.guyeike = g.newImage("guyeike.png", ImageFormat.RGB565);
-        Assets.guysike = g.newImage("guysike.png", ImageFormat.RGB565);
-        Assets.guyrike = g.newImage("guyrike.png", ImageFormat.RGB565);
-        Assets.guylike = g.newImage("guylike.png", ImageFormat.RGB565);
-        Assets.basicplatike = g.newImage("basicplatike.png", ImageFormat.RGB565);
-        Assets.movingplatike = g.newImage("movingplatike.png", ImageFormat.RGB565);
-        Assets.vanishplatike = g.newImage("vanishplatike.png", ImageFormat.RGB565);
-        Assets.superplatike = g.newImage("superplatike.png", ImageFormat.RGB565);
-        Assets.riseplatike = g.newImage("riserplatike.png", ImageFormat.RGB565);
-
-        Assets.ike = !Assets.ike;
-        Assets.reloadImages();
+        Assets.background = g.newImage("gamebgike.png", ImageFormat.RGB565);
+        Assets.guye = g.newImage("guyeike.png", ImageFormat.RGB565);
+        Assets.guys = g.newImage("guysike.png", ImageFormat.RGB565);
+        Assets.guyr = g.newImage("guyrike.png", ImageFormat.RGB565);
+        Assets.guyl = g.newImage("guylike.png", ImageFormat.RGB565);
+        Assets.basicplat = g.newImage("basicplatike.png", ImageFormat.RGB565);
+        Assets.movingplat = g.newImage("movingplatike.png", ImageFormat.RGB565);
+        Assets.vanishplat = g.newImage("vanishplatike.png", ImageFormat.RGB565);
+        Assets.superplat = g.newImage("superplatike.png", ImageFormat.RGB565);
+        Assets.riseplat = g.newImage("riserplatike.png", ImageFormat.RGB565);
 
         long t = (System.currentTimeMillis() - startTime);
         try {
@@ -49,9 +35,6 @@ public class LoadingScreen extends Screen {
         }
 
         Assets.theme.play();
-
-		//This is how you would load a sound if you had one.
-		//Assets.click = game.getAudio().createSound("explode.ogg");
 		
 		game.setScreen(new GameScreen(game));
 
