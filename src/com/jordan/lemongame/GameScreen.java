@@ -168,7 +168,11 @@ public class GameScreen extends Screen {
         if (touchEvents.size() > 0 && pauseTicks + 15 < ticks)
         {//resets the game on a tap
             GameDisplay.reset();
-			game.setScreen(new GameScreen(game));
+			ticks = 0;
+            pauseTicks = 0;
+            right = false;
+            left = false;
+            state = GameState.Ready;
         }
 	}
 	private void drawGameOverUI() {
