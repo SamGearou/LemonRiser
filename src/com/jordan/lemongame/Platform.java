@@ -64,12 +64,12 @@ public abstract class Platform {
         return platforms;
     }
 
-    //j- will define what happens when the platform is hit
+    //will define what happens when the platform is hit
     //modifies itself and the guy
     public abstract void onCollision(ScribbleGuy guy);
     public abstract void update(float deltaTime);
 
-    //j- basic action
+    //basic action
     public void basicCollisionAction(ScribbleGuy guy)
     {
         guy.velocity = guy.getMV();
